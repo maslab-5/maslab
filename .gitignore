@@ -1,3 +1,8 @@
 .DS_Store
 __pycache__/
 build/
+
+#default STM setup
+stm/Drivers
+stm/Middlewares/ST/STM32_USB_Device_Library
+stm/USB_DEVICE
