@@ -1,13 +1,11 @@
 import time
-from camera import Camera
-from command import Com
-from command import Movement
-from command import LargeMotor
-from command import SmallMotor
-from command import Servo
-from map import Map
+
 import cv2
 import numpy as np
+
+from camera import Camera
+from command import Com, LargeMotor, Movement, Servo, SmallMotor
+from map import Map
 
 preBlur = 9
 postBlur = 7
@@ -34,7 +32,7 @@ command.setMotorEnable(LargeMotor.Chute, 1)
 command.setMotorCurrent(LargeMotor.Chute, 100)
 command.setMotorDirection(LargeMotor.Chute, 1)
 command.setParameters(0.4, 0.0005)
-command.setOrigin(0, 0, 0)
+# command.setOrigin(0, 0, 0)
 command.setMotorSpeed(LargeMotor.Chute, 100)
 
 time.sleep(1)

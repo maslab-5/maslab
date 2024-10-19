@@ -1,13 +1,12 @@
+import math
 import time
-from camera import Camera
-from command import Com
-from command import Movement
-from command import Motor
-from command import SmallMotor
-from map import Map
+
 import cv2
 import numpy as np
-import math
+
+from camera import Camera
+from command import Com, Movement, SmallMotor
+from map import Map
 
 preBlur = 9
 postBlur = 7
@@ -32,14 +31,14 @@ command = Com(115200)
 
 time.sleep(0.1)
 
-command.startGyroCal(5000)
+command.startGyroCal(3000)
 
 while not command.isGyroCal():
     time.sleep(0.1)
 
 command.setOrigin(0, 0, 0)
-command.setMotorEnable(Motor.Chute, 1)
-command.setMotorCurrent(Motor.Chute, 20)
+# command.setMotorEnable(Motor.Chute, 1)
+# command.setMotorCurrent(Motor.Chute, 20)
 
 time.sleep(0.1)
 
@@ -53,5 +52,7 @@ time.sleep(1)
 
 #     time.sleep(1/maxFPS)
 
-command.gyroTurn(math.pi/2)
+while True:
+    command.gyroTurn(math.pi/2)
+    time.sleep(0.1)
 print("done")

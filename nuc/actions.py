@@ -1,7 +1,8 @@
-from command import Movement, Servo, SmallMotor, LargeMotor, Switch
-
 import math
 import time
+
+from command import LargeMotor, Movement, Servo, SmallMotor, Switch
+
 
 class Actions:
     def __init__(self, map, command, visual, unitLength, unitRotation, maxLoop):
@@ -154,6 +155,13 @@ class Actions:
         time.sleep(1.5)
         self.com.motorMove(SmallMotor.GateMotor, 0, 0)
 
+    def grabStackNoMove(self):
+        self.com.motorMove(SmallMotor.GateMotor, 100, 0)
+        self.com.setParameters(0.4, 0.00075)
+        self.com.moveServo(Servo.Camera, 250)
+        time.sleep(1.5)
+        self.com.motorMove(SmallMotor.GateMotor, 0, 0)
+
     def sortStack(self):
         self.com.setParameters(1, 0.001)
         primary = not self.map.primaryRed
@@ -170,7 +178,7 @@ class Actions:
             else:
                 self.com.startMovement(Movement.PivotLeft, -self.unitRotation*2)
             
-            time.sleep(0.85)
+            time.sleep(0.8)
             self.com.moveServo(Servo.Gate, 400)
 
             while self.com.isMoving():

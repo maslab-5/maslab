@@ -1,11 +1,13 @@
-import cv2
 import sys
+
+import cv2
 import numpy as np
+
 
 class Camera:
 
     def __init__(self, vid_index, resize, preBlur, postBlur, pFilter, sFilter):
-        self.camera = cv2.VideoCapture(vid_index, cv2.CAP_DSHOW)
+        self.camera = cv2.VideoCapture(vid_index)#, cv2.CAP_DSHOW)
         self.resize = resize
         self.preBlur = preBlur
         self.postBlur = postBlur

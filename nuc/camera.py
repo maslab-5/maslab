@@ -1,5 +1,7 @@
-import cv2
 import sys
+
+import cv2
+
 
 class Camera:
 

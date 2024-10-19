@@ -1,9 +1,11 @@
-import serial
-import sys
 import glob
-import struct
-from enum import Enum
 import math
+import struct
+import sys
+from enum import Enum
+
+import serial
+
 
 class Servo(Enum):
     Camera = 0

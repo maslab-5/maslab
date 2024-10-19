@@ -1,13 +1,11 @@
 import time
-from camera import Camera
-from command import Com
-from command import Movement
-from command import Motor
-from command import SmallMotor
-from command import Servo
-from map import Map
+
 import cv2
 import numpy as np
+
+from camera import Camera
+from command import Com, Movement, Servo, SmallMotor
+from map import Map
 
 preBlur = 9
 postBlur = 7
@@ -30,12 +28,12 @@ command = Com(115200)
 
 time.sleep(0.1)
 
-command.startGyroCal(5000)
+command.startGyroCal(3000)
 
 while not command.isGyroCal():
     time.sleep(0.1)
 
-command.setOrigin(0, 0, 0)
+# command.setOrigin(0, 0, 0)
 command.startMovement(Movement.Line, 1000)
 
 while True:

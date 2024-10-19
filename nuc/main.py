@@ -1,13 +1,18 @@
-from map import Map
-from camera import Camera
-from command import Com, SmallMotor, LargeMotor, Servo, Switch, Movement
+import os
+import time
+
+import cv2
+
 from actions import Actions
+from camera import Camera
+from command import Com, LargeMotor, Movement, Servo, SmallMotor, Switch
+from map import Map
 from visual import Visual
 
-import time
-import os
-
-running_nuc = os.name != 'nt'
+# running_nuc = False # os.name != 'nt'
+camera_index = 1
+# if running_nuc:
+#     camera_index = 0
 
 preBlur = 9
 postBlur = 7
@@ -20,9 +25,6 @@ red_range = [[-10, 120, 70], [10, 255, 255]]
 unitLength = 1452
 unitRotation = 1575
 
-camera_index = 1
-if running_nuc:
-    camera_index = 0
 
 camera_bias_x = -8
 
@@ -41,7 +43,7 @@ visual = Visual(camera, camera_bias_x, green_range, red_range)
 act = Actions(map, command, visual, unitLength, unitRotation, maxLoop)
 
 def init():
-    command.startGyroCal(5000)
+    command.startGyroCal(2000)
     while not command.isGyroCal():
         time.sleep(1/maxLoop)
 
@@ -65,6 +67,11 @@ def init():
     time.sleep(1)
 
     command.motorMove(SmallMotor.GateMotor, 0, 0)
+
+    time.sleep(4)
+
+    command.moveServo(Servo.LeftChute, 400)
+    command.moveServo(Servo.RightChute, 100)
     command.motorMove(SmallMotor.LiftMotor, 0, 0)
 
     command.setMotorDirection(LargeMotor.Chute, 0)
@@ -74,8 +81,9 @@ def init():
     command.setMotorSpeed(LargeMotor.Chute, 0)
     command.setMotorDirection(LargeMotor.Chute, 1)
 
-
-init()
+while True:
+    init()
+    act.grabStackNoMove()
 
 # act.turnToStack(Movement.PivotLeft, stackOrder[0])
 # act.moveUptoStack(stackOrder[0])
@@ -115,12 +123,12 @@ init()
 # act.turnToPositionNearest(Movement.Spin, 3, 4)
 # act.dropGround()
 
-command.setParameters(0.2, 0.00075)
-act.turnToPositionNearest(Movement.Spin, 3.5, 4.25)
-command.setParameters(0.5, 0.00075)
-act.moveToPosition(3.5, 4.25, 1)
-command.setParameters(0.2, 0.00075)
-act.turnToPositionNearest(Movement.Spin, 3.5, 2)
-act.dropPlatform()
+# command.setParameters(0.2, 0.00075)
+# act.turnToPositionNearest(Movement.Spin, 3.5, 4.25)
+# command.setParameters(0.5, 0.00075)
+# act.moveToPosition(3.5, 4.25, 1)
+# command.setParameters(0.2, 0.00075)
+# act.turnToPositionNearest(Movement.Spin, 3.5, 2)
+# act.dropPlatform()
 
 camera.destroy()
