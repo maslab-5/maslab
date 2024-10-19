@@ -1,0 +1,46 @@
+# Walls
+W, 0, 0, 3, 0
+W, 3, 0, 3, 1
+W, 3, 1, 5, 1
+W, 5, 1, 5, 4
+W, 5, 4, 4, 4
+W, 4, 4, 3, 5
+W, 3, 5, 0, 5
+W, 0, 5, 0, 0
+
+# Block stack at (1, 1)
+C, 1, 1, 0, G
+C, 1, 1, 1, R
+C, 1, 1, 2, G
+
+# Block stack at (2, 2)
+C, 2, 2, 0, G
+C, 2, 2, 1, R
+C, 2, 2, 2, G
+
+# Block stack at (4, 3)
+C, 4, 3, 0, G
+C, 4, 3, 1, R
+C, 4, 3, 2, G
+
+# Block stack at (1, 4)
+C, 1, 4, 0, G
+C, 1, 4, 1, R
+C, 1, 4, 2, G
+
+# Block stack at (2, 4)
+C, 2, 4, 0, G
+C, 2, 4, 1, R
+C, 2, 4, 2, G
+
+# Central platform
+P, 0, 2, 0, 3
+
+# AprilTag
+A, 0, 2.5, R
+
+# Starting box
+B, 4.5, 3.5
+
+# Robot starting location
+R, 4.5, 3.5, 180
