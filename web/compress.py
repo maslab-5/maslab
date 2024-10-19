@@ -70,7 +70,7 @@ def compressVideo(vidPath):
     cv2.destroyAllWindows()
 
 clearDirectory('Compressed/')
-rootdir = 'ImagesAndVideos/'
+rootdir = 'resources/'
 
 for subdir, dirs, files in os.walk(rootdir):
     for file in files:
@@ -80,6 +80,6 @@ for subdir, dirs, files in os.walk(rootdir):
             elif os.path.join(subdir, file).endswith(".mp4"):
                 compressVideo(os.path.join(subdir, file))
             else:
-                print("What the fuck")
+                print("Sad days")
 
 print("Done")
