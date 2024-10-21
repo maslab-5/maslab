@@ -3,6 +3,7 @@ __pycache__/
 build/
 
 #default STM setup
-stm/Drivers
-stm/Middlewares/ST/STM32_USB_Device_Library
-stm/USB_DEVICE
+stm/Drivers/
+stm/Middlewares/
+stm/USB_DEVICE/
+stm/Debug/
