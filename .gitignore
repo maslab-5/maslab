@@ -1,9 +1,14 @@
+### Mac ###
 .DS_Store
-__pycache__/
-build/
 
-#default STM setup
+### Python ###
+__pycache__/
+
+### STM ###
 stm/Drivers/
 stm/Middlewares/
 stm/USB_DEVICE/
 stm/Debug/
+
+### KiCad ###
+pcb/maslab-backups/
